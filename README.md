@@ -229,7 +229,7 @@ it will show you what's happening step by step as your code runs.
     }
     ```
 
-    Modify `add_len` so that it returns the total length
+    Modify `add_len` so that it returns the sum 
     of all the numbers that appear as values in a JSON data structure.
     For example, the result for the data structure shown above is 15.
 
