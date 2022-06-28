@@ -78,5 +78,19 @@ with open("test_len_sum.json",'r') as f:
     print(add_len_sum(js))
 
 """
-
+#4 Write a function `json_find` that takes a list of keys and indices
+    and returns the part of a JSON structure at that location.
+    For example, the list `["beta", "delta", 1]` should return the
+    dictionary `{"epsilon":5}` in the structure above:
+    -   The key `"beta"` selects a sub-dictionary.
+    -   They key `"delta"` selects a list.
+    -   The index 1 selects the second element of that list.
 """
+
+def json_find(keys, curdict={}):
+    if not isinstance(keys,list):
+        assert keys in curdict
+        return curdict[keys]
+    else:
+        return json_find(keys[1:],curdict[keys[0]])
+
