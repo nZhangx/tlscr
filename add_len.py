@@ -52,6 +52,31 @@ def longest(thing, longests=""):
 print(longest(["red", ["green", "blue"], ["lime"]]))
 
 """
-# 3 Modify `add_len` so that it returns the total length
+# 3 Modify `add_len` so that it returns the total sum
     of all the numbers that appear as values in a JSON data structure.
+"""
+
+def add_len_sum(thing):
+    if isinstance(thing, int):
+        return thing
+    elif isinstance(thing,list):
+        sum_all = 0
+        for item in thing:
+            sum_all += add_len_sum(item)
+        return sum_all
+        
+    assert isinstance(thing, dict)
+
+    total = 0
+    for __, item in thing.items():
+        total += add_len_sum(item)
+    return total
+
+import json
+with open("test_len_sum.json",'r') as f:
+    js = json.load(f)
+    print(add_len_sum(js))
+
+"""
+
 """
