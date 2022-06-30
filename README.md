@@ -10,14 +10,14 @@ and finally getting HTML pages from the web.
 
 The list `flat` contains three strings:
 
-```
+```python
 flat = ["red", "green", "blue", "lime"]
 ```
 
 If we want to get the total length of those strings,
 we just add up the lengths of the items in `flat`:
 
-```
+```python
 total = 0
 for word in flat:
     total += len(word)
@@ -26,7 +26,7 @@ for word in flat:
 If we have a list of lists,
 we can use a double loop:
 
-```
+```python
 double = [["red", "green"], ["blue", "lime"]]
 total = 0
 for sublist in double:
@@ -37,14 +37,14 @@ for sublist in double:
 But what if we have a mix of words and lists?
 What do we do if we have a structure like this:
 
-```
+```python
 irregular = ["red", ["green", "blue"], ["lime"]]
 ```
 
 We could test the type of the item in the outer loop,
 and only run the inner loop when the item is a sublist:
 
-```
+```python
 total = 0
 for thing in irregular:
     if isinstance(thing, str):
@@ -59,7 +59,7 @@ for thing in irregular:
 That code isn't easy to read.
 It also breaks as soon as we have sub-sub-lists like this:
 
-```
+```python
 nested = ["red", ["green", ["blue", "lime"]]]
 ```
 
@@ -67,7 +67,7 @@ To handle this,
 we need to take a step back and write a function.
 Here's our first attempt:
 
-```
+```python
 def add_len(thing):
     # If we're given a string, return its length immediately.
     if isinstance(thing, str):
@@ -87,7 +87,7 @@ We want the total length of all the strings it contains.
 If we had a magic function that could give us that total,
 we'd be done:
 
-```
+```python
 def add_len(thing):
     if isinstance(thing, str):
         return len(thing)
@@ -104,7 +104,7 @@ But we *have* the magic function we need:
 it's called `add_len`.
 Let's plug that in to get the final version of `add_len`:
 
-```
+```python
 def add_len(thing):
     if isinstance(thing, str):
         return len(thing)
@@ -183,7 +183,7 @@ it will show you what's happening step by step as your code runs.
     in a bunch of nested lists.
     For example:
 
-    ```
+    ```python
     join_all([["red", ["green", "blue"]], "lime"])
     ```
 
@@ -193,7 +193,7 @@ it will show you what's happening step by step as your code runs.
     in a bunch of nested lists.
     For example:
 
-    ```
+    ```python
     longest(["red", ["green", "blue"], ["lime"]])
     ```
 
@@ -207,13 +207,13 @@ it will show you what's happening step by step as your code runs.
     For example,
     this is a valid JSON data structure:
 
-    ```
+    ```python
     {"alpha": 1, "beta": {"gamma": [2, 3], "delta": [4, {"epsilon": 5}]}}
     ```
 
     It may be easier to read if it's written like this:
 
-    ```
+    ```python
     {
         "alpha": 1,
         "beta": {
@@ -316,7 +316,7 @@ the results are unpredictable.
 
 Here's an empty HTML page with the structure described above:
 
-```{: .html}
+```html
 <html>
   <head>
     <!-- description of page goes here -->
@@ -330,7 +330,7 @@ Here's an empty HTML page with the structure described above:
 Nothing shows up if we open this in a browser,
 so let's add a little content:
 
-```{: .html}
+```html
 <html>
   <head>
     <title>Page Title (shown in browser bar)</title>
@@ -366,13 +366,13 @@ Elements can be customized by giving them attributes,
 which are written as `name="value"` pairs inside the element's opening tag.
 For example:
 
-```{: .html}
+```html
 <h1 align="center">A Centered Heading</h1>
 ```
 
 centers the `h1` heading on the page, while:
 
-```{: .html}
+```html
 <p class="disclaimer">This planet provided as-is.</p>
 ```
 
@@ -391,7 +391,7 @@ Unfortunately,
 as the example below shows,
 HTML is inconsistent about whether values should be separated by spaces or semi-colons:
 
-```{: .html}
+```html
 <p class="disclaimer optional" style="color: blue; font-size: 200%;">
 ```
 
@@ -410,7 +410,7 @@ To create an ordered (numbered) list,
 we use `ol` instead of `ul`,
 but still use `li` for the list items.
 
-```{: .html}
+```html
 <ul>
   <li>first</li>
   <li>second</li>
@@ -426,7 +426,7 @@ produces:
 
 while:
 
-```{: .html}
+```html
 <ol>
   <li>first</li>
   <li>second</li>
@@ -451,7 +451,7 @@ column items are shown with `td` (for ``table data'')
 or `th` (for ``table heading''),
 so:
 
-```{: .html}
+```html
 <table>
   <tr> <th>Alkali</th>   <th>Noble Gas</th> </tr>
   <tr> <td>Hydrogen</td> <td>Helium</td>    </tr>
@@ -471,7 +471,7 @@ produces:
 
 What we *should* write is:
 
-```{: .html}
+```html
 <table>
   <thead>
     <tr> <th>Alkali</th>   <th>Noble Gas</th> </tr>
@@ -494,7 +494,7 @@ Oh,
 and we can use `<br/>` to force a line break in text
 (with a trailing slash inside the tag, since the `br` element doesn't contain any content):
 
-```{: .html}
+```html
 <a href="https://deepgenomics.com">Deep Genomics</a>
 <br/>
 <a href="https://third-bit.com/">Greg Wilson</a>
@@ -520,7 +520,7 @@ this can be either a URL or a local path.
 Every `img` should also include a `title` attribute (whose purpose is self-explanatory)
 and an `alt` attribute with some descriptive text to aid accessibility and search engines.
 
-```{: .html}
+```html
 <img src="./img/logo.png" title="Book Logo"
      alt="Displays the book logo using a local path" />
 <img src="https://third-bit.com/sd4ds/img/logo.png"
@@ -545,7 +545,7 @@ Two things to note here are:
 
 When HTML first appeared, people styled elements by setting their attributes:
 
-```{: .html}
+```html
 <html>
   <body>
     <h1 align="center">Heading is Centered</h1>
@@ -563,7 +563,7 @@ These allow us to define a style once and use it many times,
 which makes it much easier to maintain consistency.
 Here's a page that uses CSS instead of direct styling:
 
-```{: .html}
+```html
 <html>
   <head>
     <link rel="stylesheet" href="simple-style.css" />
@@ -587,7 +587,7 @@ we then set the `class` attribute of each element we want to style.
 
 The file `simple-style.css` looks like this:
 
-```{: .css}
+```css
 h1.title {
   text-align: center;
 }
@@ -603,7 +603,7 @@ Each entry has the form `tag.class` followed by a group of properties inside cur
 and each property is a key-value pair.
 We can omit the class and just write (for example):
 
-```{: .css}
+```css
 p {
   font-style: italic;
 }
@@ -622,7 +622,7 @@ then refer to those elements using `#name` as a selector.
 For example,
 if we create a page that gives two spans unique IDs:
 
-```{: .html}
+```html
 <html>
   <head>
     <link rel="stylesheet" href="selector-style.css" />
@@ -640,7 +640,7 @@ if we create a page that gives two spans unique IDs:
 
 then we can style those spans like this:
 
-```{: .css}
+```css
 span#major {
   text-decoration: underline red;
 }
@@ -672,7 +672,7 @@ You can install it with `pip install bs4` or `conda install bs4`.
 To show how it works,
 here's a short HTML page called `species.html`:
 
-```{: .html}
+```html
 <html>
   <head>
     <title>Species Information</title>
@@ -799,7 +799,7 @@ Notice that the `.string` property of a node returns the text inside that node.
 
 Here's a more interesting search:
 
-```{: .python
+```python
 from bs4 import BeautifulSoup
 
 with open("species.html", "r") as reader:
@@ -833,7 +833,7 @@ The three most important things about this example are:
     If the species' names were scattered throughout paragraphs of plain text,
     finding them would be a lot more work.
 
-### Exercises
+### Exercises (for the week of June 28-July 5)
 
 1.  Write a program to count the number of tables in `table.html`.
 
@@ -850,4 +850,189 @@ The three most important things about this example are:
       Details
     ```
 
+## Scraping the Web
+
+The Hypertext Transfer Protocol (HTTP) specifies one way that
+programs can exchange data over the Internet.
+HTTP is deliberately simple:
+the client sends a request specifying what it wants
+and the server sends some data in response.
+This can be the contents of a file copied from disk,
+some HTML generated dynamically,
+a blob of JSON (as text),
+or anything else.
+
+An HTTP request is that it's just text:
+any program that wants to can create one or parse one.
+An absolutely minimal HTTP request has just a *method* (sometimes also called a *verb*),
+a *URL*,
+and a *protocol version*
+on a single line separated by spaces like this:
+
+```
+GET /index.html HTTP/1.1
+```
+
+The HTTP method is almost always either `GET` (to fetch information)
+or `POST` (to submit form data or upload files).
+The URL specifies what the client wants;
+it is often a path to a file on disk,
+such as `/index.html`,
+but again,
+the server can interpret it however it wants.
+The HTTP version is usually "HTTP/1.0" or "HTTP/1.1";
+the differences between the two don't matter to us.
+
+Most real requests have a few extra lines called *headers*,
+which are key value pairs like the three shown below:
+
+```
+GET /index.html HTTP/1.1
+Accept: text/html
+Accept-Language: en, fr
+If-Modified-Since: 16-May-2022
+```
+
+Unlike the keys in hash tables,
+keys may appear any number of times in HTTP headers.
+This allows a request to do things like
+specify that it's willing to accept several types of content.
+
+Finally,
+the *body* of the request is any extra data associated with the request;
+if there is a body,
+the request must have a header called `Content-Length`
+that tells the server how many bytes to read in the body of the request.
+The body is used for submitting data via web forms,
+uploading files,
+and so on.
+There must be a blank line between the last header and the start of the body
+to signal the end of the headers.
+
+An HTTP response is formatted like an HTTP request.
+Its first line has the protocol,
+a *status code* like 200 or 404,
+and a status phrase like "OK" or "Not Found".
+There are then some headers,
+a blank line,
+and the body of the response:
+
+```
+HTTP/1.1 200 OK
+Date: Thu, 16 June 2022 12:28:53 GMT
+Server: minserve/2.2.14 (Linux)
+Last-Modified: Wed, 15 Jun 2022 19:15:56 GMT
+Content-Type: text/html
+Content-Length: 53
+
+<html>
+<body>
+<h1>Hello, World!</h1>
+</body>
+</html>
+```
+
+Constructing HTTP requests is tedious,
+so most people use libraries to do most of the work.
+The most popular such library in Python is called [requests][requests].
+Since `species.html` is stored in a public GitHub repository,
+it can be viewed online at <https://gvwilson.github.io/tlscr/species.html>.
+Here's a program that uses requests to download and print the source:
+
+```python
+import requests
+
+URL = "https://gvwilson.github.io/tlscr/species.html"
+
+response = requests.get(URL)
+print(f"status code: {response.status_code}")
+print("text:")
+print(request.text)
+```
+```text
+status code: 200
+text:
+<html>
+  <head>
+    <title>Species Information</title>
+  </head>
+  <body>
+    <h1>Species Information</h1>
+    …as previously…
+  </body>
+</html>
+```
+
+Once we have the HTML text,
+we can parse it with Beautiful Soup.
+We can then look for hypertext links
+(i.e., elements with the `a` tag and an `href` attribute)
+and download the pages that this one refers to.
+
+### Exercises (for the week of July 5-12)
+
+The page <https://gvwilson.github.io/tlscr/species-index.html>
+has the following content:
+
+```html
+<html>
+  <head>
+    <title>Species Information</title>
+  </head>
+  <body>
+    <h1>Species Information</h1>
+    <p>
+      All information from
+      <a href="https://en.wikipedia.org/wiki/List_of_birds_of_Ontario">Wikipedia</a>.
+    </p>
+    <ul>
+      <li><a href="snow-goose.html" class="species">Snow goose</a></li>
+      <li><a href="nonexistent-loon.html" class="species">Nonexistent loon</a></li>
+      <li><a href="mute-swan.html" class="species">Mute swan</a></li>
+      <li><a href="green-winged-teal.html" class="species">Green-winged teal</a></li>
+      <li><a href="smew.html" class="species">Smew</a></li>
+      <li><a href="histrionic-duck.html" class="species">Histrionic duck</a></li>
+    </ul>
+  </body>
+</html>
+```
+
+1.  Modify the Python program shown earlier to download this page,
+    parse it with Beautiful Soup,
+    and show a list of species' names.
+
+2.  Modify the program you just wrote to download this page,
+    find all the links with the class `"species"`,
+    download *those* pages,
+    and print the scientific name of each species.
+    For reference,
+    the sub-page for smews is shown below.
+
+```html
+<html>
+  <head>
+    <title>Smew</title>
+  </head>
+  <body>
+    <h1>Smew</h1>
+    <p class="scientific">Mergellus albellus</p>
+  </body>
+</html>
+```
+
+Note: you may find `urllib.parse` useful for constructing the URLs of pages.
+In particular:
+
+```
+>>> from urllib.parse import urlparse
+>>> components = urlparse("https://gvwilson.github.io/tlscr/species-index.html")
+>>> components.scheme
+"https"
+>>> components.netloc
+"gvwilson.github.io"
+>>> components.path
+"/tlscr/species-index.html"
+```
+
 [bs]: https://www.crummy.com/software/BeautifulSoup/
+[requests]: https://docs.python-requests.org/
