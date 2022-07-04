@@ -1,0 +1,6 @@
+span#major {
+  text-decoration: underline red;
+}
+span#minor {
+  text-decoration: overline blue;
+}
