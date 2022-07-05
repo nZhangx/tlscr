@@ -7,19 +7,39 @@ Write a program to count the number of tables in table.html.
 def count_tables(filename):
   with open(filename,'r') as readfile:
     doc = BeautifulSoup(readfile, "html.parser")
-    tables = doc.find("table")
-    counts = 0
-    for i, __ in enumerate(tables):
-      counts = i
-      # print(i)
-      # print(node)
-  return counts//2
+    tables = len(doc.find_all("table"))
+  return tables
 
 print(count_tables("table.html"))
+"""
+
+## Comments
+
+* img tag don't have closing tag - so use find_all (nodes)
+* iterator knows how to return the next value (instead of generate the entire list)
+  * saves memory - two numbers (what's the next and when to stop)
+  * ex. reading lines from a file is just next - (only store that much in memory)
+  * sometimes iterator hasn't been converted to list of values
+  * generator = iterator on steroid (can do more)
+    * gives yield instead of return
+
+"""
 
 """
 
 Write a program that combines all the information from tables with the class species into a single CSV file.
+
+* define intermediate points - easier to debug with breakpoint
+* Erratum: th for table header instead of td (line 9 and 18)
+* there is even thead (headers) and tbody (table body)
+  * machine generated page will do this
+* tidyverse generated tables all have that
+
+* sends request - get response
+* 200 or 404 or 403 (no permission)
+  * has body - what the response was
+* have to stop infinite recursion (relative link & absolute link & domain name in or out)
+  * hard to get canonical URL
 
 """
 def get_classes(filepath):
