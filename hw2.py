@@ -1,6 +1,6 @@
 
 from bs4 import BeautifulSoup
-
+import re
 """
 Write a program to count the number of tables in table.html.
 """
@@ -34,7 +34,7 @@ def get_classes(filepath):
           cells = row.findChildren('td')
           row_info = []
           for cell in cells:
-            cell_content = cell.getText()
+            cell_content = cell.getText().strip()
             row_info.append(cell_content)
             # print(cell_content)
           row_info.append('\n')
@@ -54,6 +54,18 @@ Species Information
 
 """
 
+def output_txt(filepath):
+  with open(filepath,'r') as readfile:
+    doc = BeautifulSoup(readfile,"html.parser")
+    header1 = doc.find("h1")
+    print(header1.getText())
+    header2 = doc.find_all("h2")
+    for h2 in header2:
+      print('\t' + h2.getText())
+
+
+
+output_txt("table.html")
 
 
 
