@@ -23,11 +23,13 @@ Write a program that combines all the information from tables with the class spe
 
 """
 def get_classes(filepath):
-  with open(filepath,'r') as readfile:
-    doc = BeautifulSoup(readfile,"html.parser")
-    tables = doc.find("table", attrs={"class": "species"})
-    for node in tables:
-      print(node.text)
+  with open('table.csv','w') as writer:
+    with open(filepath,'r') as readfile:
+      doc = BeautifulSoup(readfile,"html.parser")
+      tables = doc.findAll("table", attrs={"class": "species"})
+      for table in tables:
+        for node in table:
+          writer.write(','.join([node.split()]))
 
 get_classes("table.html")
 
