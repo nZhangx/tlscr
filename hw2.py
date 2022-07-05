@@ -9,7 +9,7 @@ def count_tables(filename):
     doc = BeautifulSoup(readfile, "html.parser")
     tables = doc.find("table")
     counts = 0
-    for i,node in enumerate(tables):
+    for i, __ in enumerate(tables):
       counts = i
       # print(i)
       # print(node)
