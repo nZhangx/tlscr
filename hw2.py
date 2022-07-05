@@ -26,10 +26,19 @@ def get_classes(filepath):
   with open('table.csv','w') as writer:
     with open(filepath,'r') as readfile:
       doc = BeautifulSoup(readfile,"html.parser")
-      tables = doc.findAll("table", attrs={"class": "species"})
+      # tables = doc.find_all("tables", attrs={"class": "species"})
+      tables = doc.find_all("table", attrs={"class": "species"})
       for table in tables:
-        for node in table:
-          writer.write(','.join([node.split()]))
+        rows = table.findChildren('tr')
+        for row in rows:
+          cells = row.findChildren('td')
+          row_info = []
+          for cell in cells:
+            cell_content = cell.getText()
+            row_info.append(cell_content)
+            # print(cell_content)
+          row_info.append('\n')
+          writer.write(",".join(row_info))
 
 get_classes("table.html")
 
@@ -44,5 +53,8 @@ Species Information
 ```
 
 """
+
+
+
 
 
