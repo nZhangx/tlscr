@@ -6,6 +6,10 @@ handling nested data,
 handling HTML,
 and finally getting HTML pages from the web.
 
+### Env:
+`conda activate scraper`
+
+
 ## Nested Data
 
 The list `flat` contains three strings:
