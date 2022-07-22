@@ -44,7 +44,7 @@ def findall_link(sublink):
         # print(spr['href'])
         link = spr['href']
         assembled_link = assemble_sublink(sublink, link)
-        print(assembled_link)
+        # print(assembled_link)
         end = parse_sublink(assembled_link)
         if not end is None:
             listofsp.append(end) 
@@ -74,3 +74,9 @@ print(findall_link(URL))
 
 
 
+"""
+Sourceline attribute (where the source file was located)
+    can sort by souceline - build table of contents
+    
+
+"""
